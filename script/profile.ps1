@@ -4,8 +4,8 @@ function which {
 	(get-command $args).path
 }
 
-$ Make a bit more simple to import certs for java
-funciton java:ssl:import {
+# Make a bit more simple to import certs for java
+function java:ssl:import {
 	if($args) {$_HOST=$args[0]} else {$_HOST="ca"}
 	$_PORT=443
 	$_KEYSTOREFILE="$(split-path(which java))\..\jre\lib\security\cacerts"
@@ -13,7 +13,7 @@ funciton java:ssl:import {
 	$_CERT="$home\.certs\import.cer"
 
 	if(($_HOST -ne "ca") -and ((Test-Path $_KEYSTOREFILE) -ne $True)){
-		Write-Host "Unable to find the 'java" binary, please make sure it is available"
+		Write-Host "Unable to find the 'java' binary, please make sure it is available"
 		return
 	}
 	if(-not(Test-Path $_CERT)){
@@ -61,14 +61,15 @@ function scoop:resetall {
 
 # Get the path
 function Path {
-	$env:Path -replace ";","`n"
+	$env:Path -replace ";","`n";
 }
 
-funciton vcode {
-	$env:NODE_TLS_REJECT_UNAUTHORIZED=0; code $args
+function vcode {
+	$env:NODE_TLS_REJECT_UNAUTHORIZED=0;
+	code $args;
 }
 
-funciton git-mv-children {
+function git-mv-children {
 	$from=$args[0];
 	$to=$args[1];
 	Get-ChildItem $from | % {
@@ -77,7 +78,7 @@ funciton git-mv-children {
 }
 
 function Update-Profile {
-	$url = "https://github.com/jstanley/scoop-setup" + "/raw/master/script/profile.ps1?raw=true";
+	$url = "https://github.com/juliostanley/scoop-setup" + "/raw/master/script/profile.ps1?raw=true";
 	Write-Host "Updating your powershell profile"
 	$profileScript = (new-object net.webclient).downloadstring($url)
 	if(!(Test-Path -Path $profile)){
@@ -99,7 +100,7 @@ Write-Host "Hi $me! Let's do this!"
 Write-Host "Checking on your ssh-agent and environment..."
 
 # Use node_modules binaries since they are very common
-WWrite-Host "Setting relative paths for binaries..."
+Write-Host "Setting relative paths for binaries..."
 $env:Path = '.\node_modules\.bin' + ';' + $env:Path;
 
 # Run the ssh agent, and auto ocnfigure the password
@@ -112,12 +113,12 @@ if( test-path "$(which scoop)\..\..\apps\pshazz" ){
 }
 
 # Setup GIT_SSH environment
-# Write-Host "Setting SSH agent for git..."
-# $env:GIT_SSH=((scoop which ssh) -replace '~',$home)
+Write-Host "Setting SSH agent for git..."
+$env:GIT_SSH=((scoop which ssh) -replace '~',$home)
 
 # Notify we are ready
-Write-Host "Type 'cool' and you will get pshazz running."
-Write-Host "Done. Lets do this!"
+Write-Host "Type 'cool' and you will get pshazz running.";
+Write-Host "Done. Lets do this!";
 
 # Start in the usual directory
 if($null=(test-path $home\workspace)) {cd $home\workspace}

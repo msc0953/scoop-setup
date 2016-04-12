@@ -2,29 +2,37 @@
 
 Provides a common installation of scoop, and essential development utilities.
 
-# What is scoop?
+### What is scoop?
 
-(Scoop)[http://scoop.sh] is a dependency manager primarily for dev tools, like NodeJS, JDK, IDEs.
+[Scoop](http://scoop.sh) is a dependency manager primarily for dev tools, like NodeJS, JDK, IDEs.
 
-# How to use it
+### How to use it
 
-- Open powershell
+- Open powershell with administrative privilages (Right click, Run As Administrator)
 - Run the following command
+- ```set-executionpolicy unrestricted;```
+- Close powerhsell
+- Open powershell WITHOUT administrative privilages
+- Run the following command
+
 ```
-set-executionpolicy unrestricted;
-iex (new-object net.webclient.downloadstring('https://github.com/jstanley/scoop-setup/raw/master/script/install.ps1?raw=true'));
+iex (new-object net.webclient).downloadstring('https://github.com/juliostanley/scoop-setup/raw/master/script/install.ps1?raw=true');
 ```
 
-# Where is everything installed
+### Why use scoop?
+
+So you do not need to simulate a linux environment inside windows, yet have access to all the common utitlities: ps, grep, sed, vim, git, ssh-add, ssh-agent, sudo, etc... All of these done from powershell, which provides you with many other utiltites native to windows. It also provides you with a very simple package manager which can be used to easily install other dependencies like Nodejs (scoop install nodejs). They will all be under a single directory. It will also update your PATH when needed.
+
+### Where is everything installed
 
 Scoop will "install" everything under ~/AppData/Local/scoop
 
-# How to add more entries to the repository?
+### How to add more entries to the repository?
 
 - You can either use buckets which are directories with json files (each describes for scoop how to install a package)
 - You can create a single json and use that to install some package
 
-# Useful powershell commands
+### Useful powershell commands
 
 - ```scoop uninstall scoop```
 - ```scoop list``` Show installed packages
@@ -45,7 +53,7 @@ Scoop will "install" everything under ~/AppData/Local/scoop
 - ```[environment]::SetEnvironmentVariable('key','value','User')``` To set a environmental variable permanently
 - ```[environment]::SetEnvironmentVariable('key',$null,'User')``` To delete a environmental variable permanently
 
-# Console2
+### Console2
 
 The powershell window in terms of funccionality is very simple. A better option is Console2, which will provide you with tabs, easier copy/paste and just a better experience overall.
 
@@ -73,6 +81,12 @@ The powershell window in terms of funccionality is very simple. A better option 
   - Check save settings to user directory
   - Press ok
   - Close the console and open it again
+
+### More installations
+
+Under [script/env](./script/env) you can find commonly used scripts to setup some developer tools.
+
+
 
 
 

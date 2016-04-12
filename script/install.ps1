@@ -45,7 +45,7 @@ Set-Variable HOME "C:\Users\$me"
 
 # Download URL
 Write-Host "Lets go get scoop!!";
-# iex (new-object net.webclient).downloadstring($Props.scoop.url);
+iex (new-object net.webclient).downloadstring($Props.scoop.url);
 
 # Install basic scoop utils
 Write-Host "Installing some essential utils"
