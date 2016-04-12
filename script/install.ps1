@@ -102,8 +102,8 @@ Write-Host "Installing a few enhancers"
 scoop install concfg
 
 # Update the style
-Write-Host "Styling Powershell"
-sudo concfg install solarized small
+# Write-Host "Styling Powershell"
+# sudo concfg import solarized
 
 # Inform about the need to update git
 Write-Host "==================================================" -foregroundcolor "yellow"
@@ -122,7 +122,7 @@ Write-Host "Console2 has been installed. Please read the README of this project 
 Write-Host "Installing pshazz, it helps with ssh"
 try {
 	scoop install pshazz
-	Write-Host "Installation complete. You will need to reopen powershell in order to see style changes. You can try 'concfg install solarized small' after opening powershell if you do not see changes" -foregroundcolor "yellow"
+	Write-Host "Installation complete. You will need to reopen powershell in order to see style changes. You can try 'concfg import solarized' after opening powershell if you do not see changes" -foregroundcolor "yellow"
 } catch {
 	try{
 		# Stop any agent running attempt to
