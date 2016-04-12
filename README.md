@@ -71,16 +71,42 @@ The powershell window in terms of funccionality is very simple. A better option 
   - Behaviour:
   	- Copy on select
   - Hot Keys:
-  	- New Tab 1: ctrl+tab
-  	- Next Tab: Alt-Right
+  	- New Tab 1: Ctrl+T
+  	- Next Tab: Alt+Right
   	- Previous Tab: Alt+Left
   - Tabs:
   	- Title: W
   	- Shell: C:\Windows\System32\WindowsPowershell\v1.0\powershell.exe
   	- Startup dir: C:\Users\YOUR_USERNAME\workspace
-  - Check save settings to user directory
   - Press ok
   - Close the console and open it again
+
+### Console2 Colors
+
+Using https://github.com/stevenharman/console2-solarized you can paste the following colors within console.xml in order to use a solarized tone for console2.
+
+Usually under: C:\Users\YOUR_USERNAME\AppData\Local\scoop\apps\console2\VERSION\console.xml
+
+```
+<colors>
+  <color id="0" r="7" g="54" b="66"/>
+  <color id="1" r="38" g="139" b="210"/>
+  <color id="2" r="133" g="153" b="0"/>
+  <color id="3" r="42" g="161" b="152"/>
+  <color id="4" r="220" g="50" b="47"/>
+  <color id="5" r="211" g="54" b="130"/>
+  <color id="6" r="181" g="137" b="0"/>
+  <color id="7" r="238" g="232" b="213"/>
+  <color id="8" r="42" g="161" b="152"/>
+  <color id="9" r="131" g="148" b="150"/>
+  <color id="10" r="88" g="110" b="117"/>
+  <color id="11" r="147" g="161" b="161"/>
+  <color id="12" r="203" g="75" b="22"/>
+  <color id="13" r="108" g="113" b="196"/>
+  <color id="14" r="101" g="123" b="131"/>
+  <color id="15" r="253" g="246" b="227"/>
+</colors>
+```
 
 ### More installations
 
