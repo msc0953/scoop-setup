@@ -88,9 +88,9 @@ function git-mv-children {
 
 # Update the console config
 function Update-ConsoleConfig {
-	Write-Host "Updating your powershell profile" -foregroundcolor "yellow";
+	Write-Host "Updating your console2 profile" -foregroundcolor "yellow";
 	$url = "https://github.com/juliostanley/scoop-setup" + "/raw/master/conf/console.xml?raw=true";
-	wget $Props.urlConsoleConfig -O "$(which-path console)/console.xml"
+	wget $url -O "$(which-path console)/console.xml"
 }
 
 # Update to the latest profile
