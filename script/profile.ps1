@@ -103,7 +103,8 @@ function Update-Profile {
 	}
 	Copy-Item $PROFILE ("$PROFILE."+(Get-Date).millisecond+".bak")
 	Set-Content $PROFILE $profileScript
-	Write-Host "Your profile has been updated, if it is not there, please download the code from $($Props.urlProfile)"
+	. $profile
+	Write-Host "Your profile has been updated, if it is not there, please download the code from $($url)"
 }
 
 # Make home the Users' machine home directory
