@@ -60,7 +60,10 @@ Scoop will "install" everything under ~/AppData/Local/scoop
 The powershell window in terms of funccionality is very simple. A better option is Console2, which will provide you with tabs, easier copy/paste and just a better experience overall.
 
 Console2 should have been installed and configured after you ran the install script above. If you would like to update to the latest settings provided available in [console.xml](./conf/console.xml), open powershell and run:
-```Update-ConsoleConfig```
+
+```
+Update-ConsoleConfig
+```
 
 #### Manually updating settings
 
@@ -73,7 +76,7 @@ Console2 should have been installed and configured after you ran the install scr
 - From the menu open Edit -> Settings
   - Console:
     - Shell: C:\Windows\System32\WindowsPowershell\v1.0\powershell.exe
-    - Startup dir (which ever you perfer): C:\Users\YOUR_USERNAME\workspace 
+    - Startup dir (which ever you perfer): C:\Users\YOUR_USERNAME\workspace
   - Behaviour:
   	- Copy on select
   - Hot Keys:
