@@ -1,0 +1,10 @@
+{
+	"close_sidebar_if_opened": false,
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+	"font-size": 8,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"theme":"Material-Theme.sublime-theme"
+}

@@ -2,5 +2,28 @@
     "installed_packages":
     [
         "Alignment"
+        ,"Color Highlighter"
+        ,"DocBlockr"
+        ,"EditorConfig"
+        ,"Focus File on Sidebar"
+        ,"Git"
+        ,"Git Config"
+        ,"GitGutter"
+        ,"Gitignore"
+        ,"Gradle_Language"
+        ,"Grails"
+        ,"HTML-CSS-JS Prettify"
+        ,"HTMLBeautify"
+        ,"JavaScriptNext - ES6 Syntax"
+        ,"JsFormat"
+        ,"JSONLint"
+        ,"JsonTree"
+        ,"LESS"
+        ,"MarkdownEditing"
+        ,"Material Theme"
+        ,"Package Control"
+        ,"PowerShell"
+        ,"Sass"
+        ,"TodoReview"
     ]
 }
