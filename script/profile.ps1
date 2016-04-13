@@ -1,7 +1,14 @@
 
-
+# Get the command path for a given command
 function which {
 	(get-command $args).path
+}
+
+# Get the directory for a given scoop package
+function which-path($command = "scoop") {
+	$path = (which $command);
+	if($path -match 'shims'){ $path = (scoop which $command) };
+	Split-Path (Resolve-Path $path).path
 }
 
 # Make a bit more simple to import certs for java
@@ -64,11 +71,13 @@ function Path {
 	$env:Path -replace ";","`n";
 }
 
+# Open visual studio code without SSL checks (useful when installing plugins and having issues with certs behind proxies)
 function vcode {
 	$env:NODE_TLS_REJECT_UNAUTHORIZED=0;
 	code $args;
 }
 
+# Move multiple git files
 function git-mv-children {
 	$from=$args[0];
 	$to=$args[1];
@@ -77,9 +86,17 @@ function git-mv-children {
 	}
 }
 
+# Update the console config
+function Update-ConsoleConfig {
+	Write-Host "Updating your powershell profile" -foregroundcolor "yellow";
+	$url = "https://github.com/juliostanley/scoop-setup" + "/raw/master/conf/console.xml?raw=true";
+	wget $Props.urlConsoleConfig -O "$(which-path console)/console.xml"
+}
+
+# Update to the latest profile
 function Update-Profile {
 	$url = "https://github.com/juliostanley/scoop-setup" + "/raw/master/script/profile.ps1?raw=true";
-	Write-Host "Updating your powershell profile"
+	Write-Host "Updating your powershell profile" -foregroundcolor "yellow";
 	$profileScript = (new-object net.webclient).downloadstring($url)
 	if(!(Test-Path -Path $profile)){
 		New-Item -path $profile -itemtype file -force

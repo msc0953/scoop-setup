@@ -3,6 +3,7 @@ $Props = @{
 	url    = "https://github.com/juliostanley/scoop-setup"
 	urlRaw = "" # To configure
 	urlProfile = "" # To configure
+	urlConsoleConfig = "" # To Configure
 	command = "" # To configure
 	powershellMin = 4
 	scoop=@{
@@ -16,7 +17,8 @@ $Props = @{
 # Configure missing properties
 $Props.command = "iex (new-object net.webclient).downloadstring(" + $Props.url + ")"
 $Props.urlRaw  = $Props.url + "/blob/master"
-$props.urlProfile = $Props.url + "/raw/master/script/profile.ps1?raw=true"
+$Props.urlProfile = $Props.url + "/raw/master/script/profile.ps1?raw=true"
+$Props.urlConsoleConfig = $Props.url + "/raw/master/conf/console.xml?raw=true"
 
 # Make sure powershell is the minimum version
 $PSVersion = $PSVersionTable.PSVersion.Major
@@ -34,10 +36,16 @@ if( $PSVersion -lt $Props.powershellMin ){
 	Exit;
 }
 
+# Utility functions
+function which { (get-command $args).path }
+function which-path($command = "scoop") {
+	$path = (which $command);
+	if($path -match 'shims'){ $path = (scoop which $command) };
+	Split-Path (Resolve-Path $path).path
+}
 
 # To avoid things from being installed in any sort of network share or roaming profile when running under a domain
 # We will set that the HOME is under Users
-function which { (get-command $args).path }
 $me = ((whoami) -split "\\")[1]
 $null = Remove-Variable -Force -ErrorAction SilentlyContinue HOME;
 Set-Variable HOME "C:\Users\$me"
@@ -113,8 +121,9 @@ Write-Host "git config --global user.name $me" -foregroundcolor "yellow"
 Write-Host "git config --global user.email $me@example.com" -foregroundcolor "yellow"
 Write-Host "==================================================" -foregroundcolor "yellow"
 
-# Installing a better console
+# Installing a better console and configure it a bit
 scoop install console2
+wget $Props.urlConsoleConfig -O "$(which-path console)/console.xml"
 console
 Write-Host "Console2 has been installed. Please read the README of this project in order to configure it. Its nicer to use than the native powershell terminal" -foregroundcolor "yellow"
 

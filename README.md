@@ -1,6 +1,8 @@
 # Scoop Setup
 
-Provides a common installation of scoop, and essential development utilities.
+Provides a common installation of scoop, and access essential development utilities
+
+> NOTE: Each tool and scoop itself are not part of this project, this only facilitates the initial setup/access. They each have their own license (many are open source, but others may not) please review their licenses before using them.
 
 ### What is scoop?
 
@@ -57,6 +59,10 @@ Scoop will "install" everything under ~/AppData/Local/scoop
 
 The powershell window in terms of funccionality is very simple. A better option is Console2, which will provide you with tabs, easier copy/paste and just a better experience overall.
 
+Console2 should have been installed and configured after you ran the install script above. If you would like to update to the latest settings provided available in [console.xml](./conf/console.xml), open powershell and run:
+```Update-ConsoleConfig```
+
+#### Manually updating settings
 
 - Open powershell
 - Run ```scoop install console2```
@@ -81,7 +87,7 @@ The powershell window in terms of funccionality is very simple. A better option 
   - Press ok
   - Close the console and open it again
 
-### Console2 Colors
+#### Colors
 
 Using https://github.com/stevenharman/console2-solarized you can paste the following colors within console.xml in order to use a solarized tone for console2.
 
