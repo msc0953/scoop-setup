@@ -90,7 +90,7 @@ function git-mv-children {
 function Update-ConsoleConfig {
 	Write-Host "Updating your console2 profile" -foregroundcolor "yellow";
 	$url = "https://github.com/juliostanley/scoop-setup" + "/raw/master/conf/console.xml?raw=true";
-	wget $url -O "$(which-path console)/console.xml"
+	wget $url -OutFile "$(which-path console)/console.xml"
 }
 
 # Update to the latest profile

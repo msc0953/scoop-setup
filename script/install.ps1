@@ -123,7 +123,7 @@ Write-Host "==================================================" -foregroundcolor
 
 # Installing a better console and configure it a bit
 scoop install console2
-wget $Props.urlConsoleConfig -O "$(which-path console)/console.xml"
+wget $Props.urlConsoleConfig -OutFile "$(which-path console)/console.xml"
 console
 Write-Host "Console2 has been installed. Please read the README of this project in order to configure it. Its nicer to use than the native powershell terminal" -foregroundcolor "yellow"
 
