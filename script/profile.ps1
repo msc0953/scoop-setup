@@ -86,6 +86,11 @@ function git-mv-children {
 	}
 }
 
+# Edit the hosts file
+function Edit-Hosts {
+    sudo subl "$env:windir/System32/drivers/etc/hosts"
+}
+
 # Update the console config
 function Update-ConsoleConfig {
 	Write-Host "Updating your console2 profile" -foregroundcolor "yellow";
