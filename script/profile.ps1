@@ -66,6 +66,15 @@ function scoop:resetall {
 	get-childitem -path "$(which scoop)\..\..\apps" | ForEach-Object {scoop reset $_.Name}
 }
 
+# Set the node_modules path
+function Set-NodeModulesPath {
+    if(-not("$env:path" -match "node_modules")) {
+        $NEWPATH = '.\node_modules\.bin;' + $env:PATH;
+        [environment]::SetEnvironmentVariable('PATH',$NEWPATH,'User');
+        $env:Path = $NEWPATH;
+    }
+}
+
 # Get the path
 function Path {
 	$env:Path -replace ";","`n";
@@ -123,8 +132,10 @@ Write-Host "Hi $me! Let's do this!"
 Write-Host "Checking on your ssh-agent and environment..."
 
 # Use node_modules binaries since they are very common
-Write-Host "Setting relative paths for binaries..."
-$env:Path = '.\node_modules\.bin' + ';' + $env:Path;
+if(-not("$env:path" -match "node_modules")) {
+    Write-Host "Ensuring relative paths for binaries..."
+    Set-NodeModulesPath
+}
 
 # Run the ssh agent, and auto ocnfigure the password
 Write-Host "Checking ssh-agent"
