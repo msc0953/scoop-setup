@@ -69,7 +69,7 @@ function scoop:resetall {
 # Set the node_modules path
 function Set-NodeModulesPath {
     if(-not("$env:path" -match "node_modules")) {
-        $NEWPATH = '.\node_modules\.bin;' + $env:PATH;
+        $NEWPATH = '.\node_modules\.bin;' + [environment]::GetEnvironmentVariable('PATH','User');
         [environment]::SetEnvironmentVariable('PATH',$NEWPATH,'User');
         $env:Path = $NEWPATH;
     }
