@@ -13,7 +13,7 @@ $sublPath = (which-path subl);
 
 # Create paths if needed
 $installedPackagesPath = "$sublPath\Data\Installed Packages";
-$userPackagesPath = "$sublPath\Data\Packages\User\test\this";
+$userPackagesPath = "$sublPath\Data\Packages\User";
 if(!(test-path $installedPackagesPath)) { New-Item -ItemType Directory -Force -Path $installedPackagesPath }
 if(!(test-path $userPackagesPath)) { New-Item -ItemType Directory -Force -Path $userPackagesPath }
 
