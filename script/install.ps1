@@ -9,8 +9,11 @@ $Props = @{
 	scoop=@{
 		url = "https://get.scoop.sh"
 	}
-	bucket=@{
-		url = "https://github.com/juliostanley/scoop-bucket.git"
+	versionsBucket=@{
+		url = "https://github.com/scoopinstaller/versions"
+	}
+	juliostanleyBucket=@{
+		url = "https://github.com/juliostanley/scoop-bucket"
 	}
 }
 
@@ -59,7 +62,8 @@ iex (new-object net.webclient).downloadstring($Props.scoop.url);
 Write-Host "Installing some essential utils"
 scoop install 7zip curl sudo git openssh coreutils grep sed less vim
 scoop bucket add extras
-# scoop bucket add juliostanley ($Props.bucket.url)
+scoop bucket add versions ($Props.versionsBucket.url)
+# scoop bucket add juliostanley ($Props.juliostanleyBucket.url)
 scoop install pstools sysinternals
 
 # Setting up openssh for git
