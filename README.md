@@ -27,7 +27,7 @@ So you do not need to simulate a linux environment inside windows, yet have acce
 
 ### Where is everything installed
 
-Scoop will "install" everything under ~/AppData/Local/scoop
+Scoop will "install" everything under ~/scoop (older versions installed at ~/AppData/Local/scoop)
 
 ### How to add more entries to the repository?
 
@@ -94,7 +94,7 @@ Update-ConsoleConfig
 
 Using https://github.com/stevenharman/console2-solarized you can paste the following colors within console.xml in order to use a solarized tone for console2.
 
-Usually under: C:\Users\YOUR_USERNAME\AppData\Local\scoop\apps\console2\VERSION\console.xml
+Usually under: C:\Users\YOUR_USERNAME\scoop\apps\console2\VERSION\console.xml
 
 ```
 <colors>
