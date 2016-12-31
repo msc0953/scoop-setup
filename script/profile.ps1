@@ -154,6 +154,22 @@ $env:GIT_SSH=((scoop which ssh) -replace '~',$home)
 Write-Host "Type 'cool' and you will get pshazz running.";
 Write-Host "Done. Lets do this!";
 
-# Start in the usual directory
-if($null=(test-path $home\workspace)) {cd $home\workspace}
-else {cd $home}
+# Current working directory set to something other than the drive letter or home
+if(((Get-Location).path.length -gt 3) -and -not((Get-Location).path -eq $home)){
+  $workingDirectory = (Get-Location).path;
+}
+
+# Stay at the current directory if a workingDirectory was provided
+if(-Not ($workingDirectory)){
+  if($null=(test-path $home\workspace)) {cd $home\workspace}
+  else {cd $home}
+}
+
+# Load the profile extension if available or create it if not
+$personalProfile="$(split-path $profile -parent)/Personal.Profile.ps1";
+if (!(Test-Path $personalProfile))
+{
+   $null = New-Item -path $personalProfile -value 'Write-Host "You should run `"notepad `$personalProfile`" and modify your personal profile."';
+   Write-Host "Created $personalProfile";
+}
+. $personalProfile
