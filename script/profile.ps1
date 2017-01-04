@@ -75,6 +75,17 @@ function Set-NodeModulesPath {
     }
 }
 
+# NPM Assistant. Allows to run from a GUI npm scripts that are described in a package.json (the scripts do not have to be nodejs related, they can be java or any other type of command)
+# package.json simply provides a nice standard way of defining named command snippets
+function assist {
+    # Install it if missing
+    if(-not(get-command npm-assistant -ErrorAction SilentlyContinue)){ npm install -g --legacy-bundling npm-assistant; }
+    # It runs as a seperate process and in the background. It can be turned off from the gui
+    Start-Process npm-assistant -WindowStyle Hidden;
+    # Open chrome browser
+    Write-Host "`nNPM Assistant has started in the background`nNavigate to http://localhost:61101`nUse ctrl+click to start scripts on a visible window`n" -ForegroundColor Yellow;
+}
+
 # Get the path
 function Path {
 	$env:Path -replace ";","`n";
